@@ -3,9 +3,6 @@
 - [Introduction](#introduction)
 - [Grover Algorithm](#grover_algorithm)
 - [Circuit Design](#circuit_design)
-- [Configuration](#configuration)
-- [Project Structure](#project-structure)
-- [License](#license)
 
 ## Introduction
 
