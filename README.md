@@ -3,6 +3,7 @@
 - [Introduction](#introduction)
 - [Grover Algorithm](#grover_algorithm)
 - [Circuit Design](#circuit_design)
+  - [Pairwise_Checker](#pairwise_checker)
 
 ## Introduction
 
@@ -31,4 +32,4 @@ Sudoku has some rules on the solution:
 
 A $2^2 × 2^2$ Sudoku has exactly $4$ rows, columns and blocks respectively. Fulfilling all the rules means a solution has been found. It is intuitive to create at least 12 ancillas as controls such that a multi-controlled Z gate on these ancillas could flip the phase (mark the state as the solution) when all ancillas are 1s (all rules fulfilled). In this project, we will only consider a specific $2^2 \times 2^2$ Sudoku problem given above. The circuit design is custom for this problem only. A general circuit design to solve an arbitrary Sudoku problem is doable but that would be a bigger project.
 
-### Create a gate that checks if two numbers are the same
+### Pairwise_Checker
