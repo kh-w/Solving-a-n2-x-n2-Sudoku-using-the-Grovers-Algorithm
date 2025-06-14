@@ -96,4 +96,4 @@ The grover circuit is the combination of the above with the following structure:
 
 ## Hardware_Limitation
 
-In theory, the above grover circuit could work and produce a state vector (superposition) with the correct answer being significantly emphasized. However, the number of qubits is large (32 qubits) and the number of ancillas is also large (23 ancillas), this makes the circuit impossible to run on a typical laptop. The error I got is "MemoryError: Unable to allocate 512. PiB for an array with shape (36028797018963968,) and data type complex128", means I need at least 512. PiB RAM to run this code. 
+In theory, the above deep grover circuit could work and produce a state vector (superposition) with the correct answer being significantly emphasized. However, the number of qubits is large (32 qubits) and the number of ancillas is also large (23 ancillas), with the deepness of the circuit, it is impossible to run on a typical laptop. The error I got is "MemoryError: Unable to allocate 512. PiB for an array with shape (36028797018963968,) and data type complex128", means I need at least 512. PiB RAM to run this code. 
