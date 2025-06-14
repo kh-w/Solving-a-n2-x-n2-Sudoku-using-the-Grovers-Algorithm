@@ -8,7 +8,7 @@
   - [Oracle_Design](#oracle_design)
   - [Diffuser](#diffuser)
   - [Grover_Circuit](#grover_circuit)
-  - [Hardware_Limitation](#hardware_limitation)
+- [Hardware_Limitation](#hardware_limitation)
 
 ## Introduction
 
