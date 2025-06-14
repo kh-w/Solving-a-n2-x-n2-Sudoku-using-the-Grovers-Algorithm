@@ -5,6 +5,10 @@
 - [Circuit Design](#circuit_design)
   - [Pairwise_Checker](#pairwise_checker)
   - [Rule_Checker](#rule_checker)
+  - [Oracle_Design](#oracle_design)
+  - [Diffuser](#diffuser)
+  - [Grover_Circuit](#grover_circuit)
+  - [Hardware_Limitation](#hardware_limitation)
 
 ## Introduction
 
@@ -16,7 +20,7 @@ In an unstructured search, we can list all possibilities (both correct and wrong
 
 ## Grover_Algorithm
 
-We will encode the 1, 2, 3, 4 by 00, 01, 10, 11 respectively. 
+We will encode the 1, 2, 3, 4 by 00, 01, 10, 11 respectively. therefore, a solution would have 32 bits.
 
 The Grover algorithm has the following steps:
 1. A "list" to search: Create all possibilities based on the number of qubits and Hadamard gate. All the possibilities will be included in an equal superposition of $\left| x_0x_1...x_{31} \right\rangle$, which is created by $H^{\otimes 32}\left| 0 \right\rangle$.
@@ -64,5 +68,32 @@ The above is a general rule check. In a specific Sudoku problem, some numbers ar
 #### A specific rule check for row 1, check whether 1st, 2nd, 3rd numbers are 1, 4, 3 respectively, and comparing 6 pairs of numbers:
 ![image](https://github.com/user-attachments/assets/79774ba4-e74c-4da0-acd9-22fd442b6cf7)
 
-11 more (R2,R3,R4,C1,C2,C3,C4,B1,B2,B3,B4) specific checks for rows, columns and blocks are being developed in the Jupyter Notebook.
+11 more (R2,R3,R4,C1,C2,C3,C4,B1,B2,B3,B4) specific checks for rows, columns and blocks are being developed in the Jupyter Notebook. Combining 12 of these checks, we created a gate call "Solution_Check" and its inverse "Inv_Solution_Check".
 
+### Oracle_Design
+
+The oracle consists of the "Solution_Check" gate, Control-Z gate, "Inv_Solution_Check" gate which illustrated below:
+
+![image](https://github.com/user-attachments/assets/c5f5655b-6cea-45c2-8e5a-418d1125f3bf)
+
+### Diffuser
+
+The diffuser circuit performs the following to the marked superposition:\
+\
+$2\left| s \right\rangle\left\langle s \right|-I=H^{\otimes n}(2\left| 0 \right\rangle\left\langle 0 \right|-I)H^{\otimes n}$\
+\
+where $\left| s \right\rangle$ is the equal superposition.
+
+Hence we can create the diffuser circuit using:
+
+![image](https://github.com/user-attachments/assets/b24e4dec-8697-4d56-960c-f82ab93c7349)
+
+### Grover_Circuit
+
+The grover circuit is the combination of the above with the following structure:
+
+![image](https://github.com/user-attachments/assets/099d04fb-ab21-476e-8273-b029c48b9a31)
+
+## Hardware_Limitation
+
+In theory, the above grover circuit could work and produce a state vector (superposition) with the correct answer being significantly emphasized. However, the number of qubits is large (32 qubits) and the number of ancillas is also large (23 ancillas), this makes the circuit impossible to run on a typical laptop. The error I got is "MemoryError: Unable to allocate 512. PiB for an array with shape (36028797018963968,) and data type complex128", means I need at least 512. PiB RAM to run this code. 
